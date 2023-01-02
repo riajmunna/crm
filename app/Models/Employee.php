@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Employee extends Model
 {
@@ -19,7 +20,7 @@ class Employee extends Model
         self::$employee->employee_email = $request->employee_email;
         self::$employee->employee_registration_number = $request->employee_registration_number;
         self::$employee->password = bcrypt($request->password);
-        self::$employee->created_by = $request->batch_id;
+        self::$employee->created_by = Auth::user()->id;
         self::$employee->save();
     }
 

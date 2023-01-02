@@ -18,7 +18,7 @@ class CustomerController extends Controller
     public function saveCustomer(Request $request)
     {
         Customer::saveCustomer($request);
-        return back();
+        return back()->with('success','Successfully Added');;
     }
 
     public function manageCustomer()
@@ -31,6 +31,6 @@ class CustomerController extends Controller
     {
         $this->customer = Customer::find($id);
         $this->customer->delete();
-        return back();
+        return back()->with('success','Successfully Deleted');;
     }
 }

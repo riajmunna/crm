@@ -4,6 +4,7 @@
 @endsection
 @section('content')
     <main id="main" class="main">
+        @include('admin.include.alert')
     <div class="col-lg-9 offset-md-2">
 
         <div class="card">
@@ -15,7 +16,11 @@
                     @csrf
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">Batch ID</label>
-                        <input type="text" class="form-control" name="batch_id" placeholder="Enter Batch ID">
+                        <select name="batch_id" class="form-control">
+                            @foreach($batches as $batch)
+                            <option value="{{ $batch->id }}">{{ $batch->batch_id }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">Employee Name</label>

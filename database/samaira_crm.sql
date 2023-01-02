@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2023 at 08:35 AM
+-- Generation Time: Jan 02, 2023 at 11:40 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -24,6 +24,56 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `agents`
+--
+
+CREATE TABLE `agents` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `agent_name` varchar(255) NOT NULL,
+  `agent_phone` varchar(255) NOT NULL,
+  `agent_email` varchar(255) NOT NULL,
+  `agent_address` text NOT NULL,
+  `agent_password` text NOT NULL,
+  `created_by` text NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '0 = Inactive, 1= Active',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `agents`
+--
+
+INSERT INTO `agents` (`id`, `agent_name`, `agent_phone`, `agent_email`, `agent_address`, `agent_password`, `created_by`, `status`, `created_at`, `updated_at`) VALUES
+(2, 'sohag', '01766996853', 'shshohagh3@gmail.com', 'Dhaka', '$2y$10$qstTotVP9fPhA5SBTEIv5.Qmk1IvjchykgDIUjKaiz89TD1Fx3RAa', '1', 1, '2023-01-02 03:51:38', '2023-01-02 03:51:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `batches`
+--
+
+CREATE TABLE `batches` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `batch_id` varchar(255) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=Published; 0=Unpublished',
+  `created_by` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `batches`
+--
+
+INSERT INTO `batches` (`id`, `batch_id`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
+(2, '15', 1, 1, '2023-01-02 04:22:51', '2023-01-02 04:22:51'),
+(3, '16', 1, 1, '2023-01-02 04:25:38', '2023-01-02 04:25:38'),
+(4, '17', 1, 1, '2023-01-02 04:31:43', '2023-01-02 04:31:43');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `customers`
 --
 
@@ -34,6 +84,7 @@ CREATE TABLE `customers` (
   `customer_email` varchar(255) NOT NULL,
   `customer_address` text NOT NULL,
   `customer_facebook_link` varchar(255) NOT NULL,
+  `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -42,9 +93,9 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `customer_name`, `customer_phone`, `customer_email`, `customer_address`, `customer_facebook_link`, `created_at`, `updated_at`) VALUES
-(2, 'Sohag', '01766996853', 'shshohagh3@gmail.com', 'Mirpur', 'shshohagh3', '2023-01-01 05:19:41', '2023-01-01 05:19:41'),
-(3, 'afad', '345646', 'dfadsfad@fgdf.vbh', 'drthrtjrtj', 'rtnjhrtjnrty', '2023-01-01 23:22:41', '2023-01-01 23:22:41');
+INSERT INTO `customers` (`id`, `customer_name`, `customer_phone`, `customer_email`, `customer_address`, `customer_facebook_link`, `created_by`, `created_at`, `updated_at`) VALUES
+(2, 'Sohag', '01766996853', 'shshohagh3@gmail.com', 'Mirpur', 'shshohagh3', 0, '2023-01-01 05:19:41', '2023-01-01 05:19:41'),
+(3, 'afad', '345646', 'dfadsfad@fgdf.vbh', 'drthrtjrtj', 'rtnjhrtjnrty', 0, '2023-01-01 23:22:41', '2023-01-01 23:22:41');
 
 -- --------------------------------------------------------
 
@@ -54,15 +105,18 @@ INSERT INTO `customers` (`id`, `customer_name`, `customer_phone`, `customer_emai
 
 CREATE TABLE `employees` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `employee_name` varchar(50) NOT NULL,
-  `employee_phone` varchar(20) NOT NULL,
+  `batch_id` varchar(255) NOT NULL,
+  `employee_name` varchar(255) NOT NULL,
+  `employee_phone` varchar(255) NOT NULL,
   `employee_email` varchar(255) NOT NULL,
-  `employee_registration_number` varchar(20) NOT NULL,
+  `employee_registration_number` varchar(255) NOT NULL,
   `password` text NOT NULL,
   `employee_login` varchar(255) DEFAULT NULL,
   `employee_logout` varchar(255) DEFAULT NULL,
-  `employee_type` tinyint(4) DEFAULT NULL,
+  `employee_work_type` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1=Email; 2=Data Entry',
+  `employee_work_amount` int(11) DEFAULT NULL COMMENT 'Total Number of Email',
   `status` tinyint(4) NOT NULL DEFAULT 1 COMMENT '1 = Published; 0 = Unpublished',
+  `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -71,8 +125,8 @@ CREATE TABLE `employees` (
 -- Dumping data for table `employees`
 --
 
-INSERT INTO `employees` (`id`, `employee_name`, `employee_phone`, `employee_email`, `employee_registration_number`, `password`, `employee_login`, `employee_logout`, `employee_type`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'Riaj Hosen', '01953153985', 'riaj@gmail.com', '1001', '$2y$10$mF00CssRc.MhanAMJKBYb.oNSU58Bw4/CvyF/jBtSwp.mmW.fKQ/y', NULL, NULL, NULL, 1, '2023-01-01 23:29:44', '2023-01-01 23:29:44');
+INSERT INTO `employees` (`id`, `batch_id`, `employee_name`, `employee_phone`, `employee_email`, `employee_registration_number`, `password`, `employee_login`, `employee_logout`, `employee_work_type`, `employee_work_amount`, `status`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, '2', 'ada', 'asdas', 'admin@gmail.com', '43456574', '$2y$10$wItuXI4mJK4yQPWGqj4LIe2Qb/IfL9fVF./IJy0cFhekW5LQg0aGq', NULL, NULL, 1, NULL, 1, 2, '2023-01-02 04:30:05', '2023-01-02 04:30:05');
 
 -- --------------------------------------------------------
 
@@ -113,8 +167,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2019_08_19_000000_create_failed_jobs_table', 1),
 (5, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (6, '2022_12_31_174834_create_sessions_table', 1),
-(8, '2023_01_01_070805_create_employees_table', 2),
-(9, '2023_01_01_104608_create_customers_table', 3);
+(9, '2023_01_01_104608_create_customers_table', 3),
+(12, '2023_01_02_083907_create_batches_table', 4),
+(13, '2023_01_01_070805_create_employees_table', 5),
+(14, '2023_01_02_084134_create_agents_table', 6);
 
 -- --------------------------------------------------------
 
@@ -167,7 +223,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('28COUwy6BIdINgU5zTl5HTmsOif5ExHT08Plhr9e', 1, '::1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 OPR/94.0.0.0', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoidVI4UnFpM3pFdkRjaDRkYTBlaUg3aVpMRnUzNEs2aHZlMUNrYnhCYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly9sb2NhbGhvc3Qvc2FtYWlyYV9jcm0vcHVibGljL21hbmFnZS1lbXBsb3llZSI7fXM6MzoidXJsIjthOjA6e31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHhkWlZTYVhjUnNFQjZuZGl0RTZCbS4vZVYzZFh2bTl5MmZuaVBvRzlsQzFqaDdqN20vMzk2Ijt9', 1672643831);
+('8Kfsq31KsQlkXezro46zcsCUPiPV2VHz3ss4LNvI', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoicW5OTUI4djN4M3lidGFZazg5b2pvb0Rmb3JTTmY4N0NzNFR1ektORSI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDg6Imh0dHA6Ly9sb2NhbGhvc3Qvc2FtYWlyYS9jcm0vcHVibGljL2FkZC1jdXN0b21lciI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkeGRaVlNhWGNSc0VCNm5kaXRFNkJtLi9lVjNkWHZtOXkyZm5pUG9HOWxDMWpoN2o3bS8zOTYiO30=', 1672655997),
+('t54rbHCmgiWdVoxcdu0lkk3fO8OkAzrW8mFJV4KV', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoibVU1YzYyTldXMVZYUU9vMHlER0xZZUk3OWtLc3lrT3VxU2VBU2tnVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sb2NhbGhvc3Qvc2FtYWlyYS9jcm0vcHVibGljIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1672655959);
 
 -- --------------------------------------------------------
 
@@ -190,6 +247,7 @@ CREATE TABLE `users` (
   `user_login` date DEFAULT NULL,
   `user_logout` date DEFAULT NULL,
   `user_type` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1=Admin; 2= Agent 3=Employee',
+  `created_by` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -198,12 +256,26 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `user_login`, `user_logout`, `user_type`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$xdZVSaXcRsEB6nditE6Bm./eV3dXvm9y2fniPoG9lC1jh7j7m/396', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, '2023-01-01 03:36:25', '2023-01-01 03:36:25');
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `remember_token`, `current_team_id`, `profile_photo_path`, `user_login`, `user_logout`, `user_type`, `created_by`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'admin@gmail.com', NULL, '$2y$10$xdZVSaXcRsEB6nditE6Bm./eV3dXvm9y2fniPoG9lC1jh7j7m/396', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 0, '2023-01-01 03:36:25', '2023-01-01 03:36:25');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `agents`
+--
+ALTER TABLE `agents`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `agents_agent_phone_unique` (`agent_phone`),
+  ADD UNIQUE KEY `agents_agent_email_unique` (`agent_email`);
+
+--
+-- Indexes for table `batches`
+--
+ALTER TABLE `batches`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `customers`
@@ -267,10 +339,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `agents`
+--
+ALTER TABLE `agents`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `batches`
+--
+ALTER TABLE `batches`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `employees`
@@ -288,7 +372,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`

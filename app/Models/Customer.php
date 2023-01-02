@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Customer extends Model
 {
@@ -19,6 +20,7 @@ class Customer extends Model
         self::$employee->customer_email = $request->customer_email;
         self::$employee->customer_address = $request->customer_address;
         self::$employee->customer_facebook_link = $request->customer_facebook_link;
+        self::$employee->created_by = Auth::user()->id;
         self::$employee->save();
     }
 

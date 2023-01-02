@@ -7,6 +7,7 @@
 
         <main id="main" class="main">
         <div class="container mt-lg-5">
+            @include('admin.include.alert')
             <div class="row">
                 <div class="col-lg-12" style="display: block; margin-left: auto; margin-right: auto;">
 

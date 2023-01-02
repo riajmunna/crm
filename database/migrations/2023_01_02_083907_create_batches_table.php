@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('batches', function (Blueprint $table) {
             $table->id();
             $table->string('batch_id');
-            $table->tinyInteger('status')->deafult(1)->comment('1=Published; 0=Unpublished');
+            $table->tinyInteger('status')->default(1)->comment('1=Published; 0=Unpublished');
             $table->integer('created_by');
             $table->timestamps();
         });

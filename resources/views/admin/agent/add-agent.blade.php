@@ -4,8 +4,8 @@
 @endsection
 @section('content')
     <main id="main" class="main">
+        @include('admin.include.alert')
         <div class="col-lg-9 offset-md-2">
-
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Add Agent</h5>

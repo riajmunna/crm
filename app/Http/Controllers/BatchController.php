@@ -9,8 +9,13 @@ class BatchController extends Controller
 {
     public function saveBatch(Request $request)
     {
-        Batch::saveBatch($request);
-        return back();
+        if($request->batch_id!=null) {
+            Batch::saveBatch($request);
+            return back()->with('success','Successfully Added');
+        }else{
+            return back()->with('warning','Please Enter Value');
+        }
+
     }
     public function manageBatch()
     {

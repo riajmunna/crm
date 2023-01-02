@@ -15,7 +15,7 @@ class AgentController extends Controller
 
     public function saveAgent(Request $request){
         Agent::saveAgent($request);
-        return back();
+        return back()->with('success','Successfully Added');;
     }
 
     public function manageAgent()
@@ -28,6 +28,6 @@ class AgentController extends Controller
     public function deleteAgent(Request $request){
         $this->agent = Agent::find($request->agent_id);
         $this->agent->delete();
-        return back();
+        return back()->with('success','Successfully Deleted');;
     }
 }

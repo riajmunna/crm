@@ -5,8 +5,30 @@
 @section('content')
     <main id="main" class="main">
         <div class="container mt-lg-5">
+            @include('admin.include.alert')
             <div class="row">
-                <div class="col-lg-12" style="display: block; margin-left: auto; margin-right: auto;">
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Add Batch</h5>
+                            <form class="row g-3" action="{{route('add.batch')}}" method="post">
+                                @csrf
+                                <div class="col-12">
+                                    <label class="form-label">Batch ID </label>
+                                    <input type="text" class="form-control" name="batch_id" placeholder="Enter Batch ID">
+                                </div>
+
+                                <div class="text-left">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8" style="display: block; margin-left: auto; margin-right: auto;">
 
                     <div class="card">
                         <div class="card-body">
