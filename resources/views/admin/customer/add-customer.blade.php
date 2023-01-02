@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="col-12">
-                            <label class="form-label">Customer Facebook Link</label>
+                            <label class="form-label">Customer Facebook Link (Optional)</label>
                             <input type="text" class="form-control" name="customer_facebook_link" placeholder="Enter Facebook Link">
                         </div>
 

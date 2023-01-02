@@ -8,6 +8,7 @@ class FrontEndController extends Controller
 {
     public function index()
     {
+
         return view('admin.login.login');
     }
 }

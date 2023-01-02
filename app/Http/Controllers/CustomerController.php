@@ -17,8 +17,12 @@ class CustomerController extends Controller
 
     public function saveCustomer(Request $request)
     {
-        Customer::saveCustomer($request);
-        return back()->with('success','Successfully Added');;
+        if ($request->customer_name != null && $request->customer_phone != null && $request->customer_email != null && $request->customer_address != null) {
+            Customer::saveCustomer($request);
+            return back()->with('success', 'Successfully Added');
+        } else {
+            return back()->with('warning', 'Please Enter Data');
+        }
     }
 
     public function manageCustomer()

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,10 +26,10 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('dashboard',[AdminController::class,'adminDashboard'])->name('dashboard');
 
     /* Employee */
-    Route::get('add-employee',[AdminController::class,'addEmployee'])->name('add.employee');
-    Route::post('add-employee',[AdminController::class,'saveEmployee'])->name('add.employee');
-    Route::get('manage-employee',[AdminController::class,'manageEmployee'])->name('manage.employee');
-    Route::post('delete-employee/{id}',[AdminController::class,'deleteEmployee'])->name('delete.employee');
+    Route::get('add-employee',[EmployeeController::class,'addEmployee'])->name('add.employee');
+    Route::post('add-employee',[EmployeeController::class,'saveEmployee'])->name('add.employee');
+    Route::get('manage-employee',[EmployeeController::class,'manageEmployee'])->name('manage.employee');
+    Route::post('delete-employee/{id}',[EmployeeController::class,'deleteEmployee'])->name('delete.employee');
 
     /* Agent */
     Route::get('add-agent',[AgentController::class,'addAgent'])->name('add.agent');
