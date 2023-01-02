@@ -34,9 +34,9 @@ class AdminController extends Controller
         ]);
     }
 
-    public function deleteEmployee($id)
+    public function deleteEmployee(Request $request)
     {
-        $this->employee = Employee::find($id);
+        $this->employee = Employee::find($request->employee_id);
         $this->employee->delete();
         return back();
     }

@@ -35,12 +35,11 @@
 
                     <div class="col-12">
                         <label for="inputPassword4" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Enter Password">
+                        <input type="password" class="form-control"  name="password" placeholder="Enter Password">
                     </div>
 
                     <div class="text-left">
                         <button type="submit" class="btn btn-primary">Submit</button>
-{{--                        <button type="reset" class="btn btn-secondary">Reset</button>--}}
                     </div>
                 </form>
 

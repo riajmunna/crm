@@ -54,6 +54,24 @@
         </li>
 
         <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#agent-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Agent</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="agent-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('add.agent')}}">
+                        <i class="bi bi-plus-circle"></i><span>Add Agent</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('manage.agent')}}">
+                        <i class="bi bi-pencil-square"></i><span>Manage Agent</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link " href="#">
                 <i class="bi bi-bell"></i>
                 <span>Notice Board</span>
