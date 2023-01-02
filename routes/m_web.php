@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\AgentController;
 use App\Http\Controllers\BatchController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,12 +27,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::post('add-employee',[AdminController::class,'saveEmployee'])->name('add.employee');
     Route::get('manage-employee',[AdminController::class,'manageEmployee'])->name('manage.employee');
     Route::post('delete-employee/{id}',[AdminController::class,'deleteEmployee'])->name('delete.employee');
-
-    /* Agent */
-    Route::get('add-agent',[AgentController::class,'addAgent'])->name('add.agent');
-    Route::post('add-agent',[AgentController::class,'saveAgent'])->name('add.agent');
-    Route::get('manage-agent',[AgentController::class,'manageAgent'])->name('manage.agent');
-    Route::post('delete-agent/{id}',[AgentController::class,'deleteAgent'])->name('delete.agent');
 
     /* Customer */
     Route::get('add-customer',[CustomerController::class,'addCustomer'])->name('add.customer');

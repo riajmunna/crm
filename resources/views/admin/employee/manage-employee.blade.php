@@ -12,7 +12,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Manage Employee Info.</h5>
+                            <h5 class="card-title">Employee Info.</h5>
 
                             <!-- Table with stripped rows -->
                             <div class="table-responsive">
@@ -22,7 +22,6 @@
                                     <th scope="col">List ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Mobile</th>
-                                    <th scope="col">Email</th>
                                     <th scope="col">Registration Number</th>
                                     <th scope="col">Login Time</th>
                                     <th scope="col">Logout Time</th>
@@ -36,9 +35,12 @@
                                 @foreach($employees as $employee)
                                     <tr>
                                         <td scope="row">{{$i++}}</td>
-                                        <td scope="row">{{$employee->employee_name}}</td>
+                                        <td scope="row">
+                                            {{$employee->employee_name}} <br>
+                                            <small>{{$employee->employee_email}}</small>
+                                        </td>
                                         <td scope="row">{{$employee->employee_phone}}</td>
-                                        <td scope="row">{{$employee->employee_email}}</td>
+
                                         <td scope="row">{{$employee->employee_registration_number}}</td>
                                         <td scope="row">{{$employee->created_at}}</td>
                                         <td scope="row">{{$employee->updated_at}}</td>

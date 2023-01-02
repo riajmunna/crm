@@ -17,4 +17,8 @@ Fetures:
 11. CRM
 12. Setting
 
+Middleware:
+Employee Access: Customer(Add,Manage,Edit,Delete), Agent(Add,Manage,Edit,Delete);
+Agent Access: Customer(Add,Manage,Edit,Delete);
+
 

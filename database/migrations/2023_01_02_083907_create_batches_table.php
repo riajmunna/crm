@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('batches', function (Blueprint $table) {
             $table->id();
-            $table->string('customer_name');
-            $table->string('customer_phone')->unique();
-            $table->string('customer_email')->unique();
-            $table->text('customer_address');
-            $table->string('customer_facebook_link')->unique();
+            $table->string('batch_id');
+            $table->tinyInteger('status')->deafult(1)->comment('1=Published; 0=Unpublished');
             $table->integer('created_by');
             $table->timestamps();
         });
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('batches');
     }
 };

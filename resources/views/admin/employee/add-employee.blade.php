@@ -14,6 +14,10 @@
                 <form class="row g-3" action="{{route('add.employee')}}" method="post">
                     @csrf
                     <div class="col-12">
+                        <label for="inputNanme4" class="form-label">Batch ID</label>
+                        <input type="text" class="form-control" name="batch_id" placeholder="Enter Batch ID">
+                    </div>
+                    <div class="col-12">
                         <label for="inputNanme4" class="form-label">Employee Name</label>
                         <input type="text" class="form-control" name="employee_name" placeholder="Enter Name">
                     </div>

@@ -13,11 +13,13 @@ class Employee extends Model
     public static function saveEmployee($request)
     {
         self::$employee = new Employee();
+        self::$employee->batch_id = $request->batch_id;
         self::$employee->employee_name = $request->employee_name;
         self::$employee->employee_phone = $request->employee_phone;
         self::$employee->employee_email = $request->employee_email;
         self::$employee->employee_registration_number = $request->employee_registration_number;
         self::$employee->password = bcrypt($request->password);
+        self::$employee->created_by = $request->batch_id;
         self::$employee->save();
     }
 

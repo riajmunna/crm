@@ -114,10 +114,16 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link " href="#">
-                <i class="bi bi-gear-fill"></i>
-                <span>Setting</span>
+            <a class="nav-link collapsed" data-bs-target="#Setting-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-gear-fill"></i><span>Setting</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="Setting-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('manage.batch')}}">
+                        <i class="bi bi-pencil-square"></i><span>Batch Setup</span>
+                    </a>
+                </li>
+            </ul>
         </li>
 
     </ul>
