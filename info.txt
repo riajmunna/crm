@@ -1,0 +1,20 @@
+Project name: Samaira CRM
+Project duration: 01-01-2023 --- 10-01-2023
+Project manager: Raihanul Islam
+Github Link: https://github.com/shshohagh3/crm
+
+Fetures:
+1. Login
+2. Dashboard
+3. Customer
+4. Employee
+5. Agent
+6. Notice Board
+7. Payroll
+8. Project
+9. Leads
+10. Reports
+11. CRM
+12. Setting
+
+

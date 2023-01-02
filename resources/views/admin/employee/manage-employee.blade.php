@@ -22,6 +22,7 @@
                                     <th scope="col">List ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Mobile</th>
+                                    <th scope="col">Email</th>
                                     <th scope="col">Registration Number</th>
                                     <th scope="col">Login Time</th>
                                     <th scope="col">Logout Time</th>
@@ -37,6 +38,7 @@
                                         <td scope="row">{{$i++}}</td>
                                         <td scope="row">{{$employee->employee_name}}</td>
                                         <td scope="row">{{$employee->employee_phone}}</td>
+                                        <td scope="row">{{$employee->employee_email}}</td>
                                         <td scope="row">{{$employee->employee_registration_number}}</td>
                                         <td scope="row">{{$employee->created_at}}</td>
                                         <td scope="row">{{$employee->updated_at}}</td>
