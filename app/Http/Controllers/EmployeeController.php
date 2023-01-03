@@ -18,8 +18,23 @@ class EmployeeController extends Controller
     public function saveEmployee(Request $request)
     {
         if ($request->batch_id != null && $request->employee_name != null && $request->employee_phone != null && $request->employee_email != null && $request->employee_registration_number != null && $request->password != null) {
-            Employee::saveEmployee($request);
-            return back()->with('success', 'Successfully Added');
+
+            if(Employee::where('employee_phone','=',$request->employee_phone)->exists()){
+                return back()->with('warning', 'This phone is already taken..');
+            }
+
+            if(Employee::where('employee_email','=',$request->employee_email)->exists()){
+                return back()->with('warning', 'This email is already taken..');
+            }
+
+            if(Employee::where('employee_registration_number','=',$request->employee_registration_number)->exists()){
+                return back()->with('warning', 'This registration number is already taken..');
+            }
+            else{
+                Employee::saveEmployee($request);
+                return back()->with('success', 'Successfully Added');
+            }
+
         } else {
             return back()->with('warning', 'Please Enter Data');
         }

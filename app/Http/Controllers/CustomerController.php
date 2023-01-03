@@ -17,10 +17,28 @@ class CustomerController extends Controller
 
     public function saveCustomer(Request $request)
     {
+
         if ($request->customer_name != null && $request->customer_phone != null && $request->customer_email != null && $request->customer_address != null) {
-            Customer::saveCustomer($request);
-            return back()->with('success', 'Successfully Added');
-        } else {
+
+            if(Customer::where('customer_phone','=',$request->customer_phone)->exists()){
+                return back()->with('warning', 'This phone is already taken..');
+            }
+
+            if(Customer::where('customer_email','=',$request->customer_email)->exists()){
+                return back()->with('warning', 'This email is already taken..');
+            }
+
+            if(Customer::where('customer_facebook_link','=',$request->customer_facebook_link)->exists()){
+                return back()->with('warning', 'This facebook is already taken..');
+            }
+            else{
+                Customer::saveCustomer($request);
+                return back()->with('success', 'Successfully Added');
+            }
+
+        }
+
+        else {
             return back()->with('warning', 'Please Enter Data');
         }
     }

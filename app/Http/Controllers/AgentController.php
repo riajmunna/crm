@@ -18,8 +18,20 @@ class AgentController extends Controller
     public function saveAgent(Request $request)
     {
         if ($request->agent_name != null && $request->agent_phone != null && $request->agent_email != null && $request->agent_address != null && $request->agent_password != null) {
-            Agent::saveAgent($request);
-            return back()->with('success', 'Successfully Added');
+
+            if(Agent::where('agent_phone','=',$request->agent_phone)->exists()){
+                return back()->with('warning', 'This phone is already taken..');
+            }
+
+            if(Agent::where('agent_email','=',$request->agent_email)->exists()){
+                return back()->with('warning', 'This email is already taken..');
+            }
+
+            else{
+                Agent::saveAgent($request);
+                return back()->with('success', 'Successfully Added');
+            }
+            
         } else {
             return back()->with('warning', 'Please Enter Data');
         }
