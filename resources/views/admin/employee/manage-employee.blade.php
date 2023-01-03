@@ -17,7 +17,7 @@
 
                             <!-- Table with stripped rows -->
                             <div class="table-responsive">
-                            <table id="example2" class="table table-striped" style="text-align: center">
+                            <table id="example2" class="table table-striped" style="text-align: center; font-size: 12px">
                                 <thead>
                                 <tr>
                                     <th scope="col">List ID</th>
@@ -56,17 +56,21 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                                        <a href="" style="font-size: 10px" class="btn btn-primary btn-sm">Edit</a>
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
                                                         <form action="{{ route('delete.employee',['id'=>$employee->id]) }}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="employee_id" value="{{$employee->id}}">
-                                                            <button type="submit" class="btn btn-danger btn-sm"
+                                                            <button type="submit" class="btn btn-danger btn-sm" style="font-size: 10px"
                                                                     onclick="return confirm('Are you sure??')">Delete
                                                             </button>
                                                         </form>
+                                                    </td>
+                                                    <td>&nbsp;</td>
+                                                    <td>
+                                                        <a href="" style="font-size: 10px" class="btn btn-secondary btn-sm">Email</a>
                                                     </td>
                                                 </tr>
                                             </table>

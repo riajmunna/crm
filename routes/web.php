@@ -49,4 +49,5 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('manage-batch',[BatchController::class,'manageBatch'])->name('manage.batch');
     Route::post('delete-batch/{id}',[BatchController::class,'deleteBatch'])->name('delete.batch');
 
+
 });

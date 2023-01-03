@@ -18,7 +18,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Customer-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-person-badge-fill"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="Customer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -37,7 +37,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Employee</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-person-bounding-box"></i><span>Employee</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="employee-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -55,7 +55,7 @@
 
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#agent-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Agent</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-person-circle"></i><span>Agent</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="agent-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
@@ -90,6 +90,24 @@
                 <i class="bi bi-menu-button-wide"></i>
                 <span>Project</span>
             </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#task-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-list-task"></i><span>Tasks</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="task-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="#">
+                        <i class="bi bi-envelope"></i><span>SMS</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <i class="bi bi-envelope"></i><span>Email</span>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="nav-item">

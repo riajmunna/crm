@@ -31,7 +31,7 @@ class AgentController extends Controller
                 Agent::saveAgent($request);
                 return back()->with('success', 'Successfully Added');
             }
-            
+
         } else {
             return back()->with('warning', 'Please Enter Data');
         }
