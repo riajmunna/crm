@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -18,6 +19,20 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
+    private static $user;
+
+    public static function saveUser($request)
+    {
+        self::$user = new User();
+        self::$user->name = $request->name;
+        self::$user->phone = $request->phone;
+        self::$user->email = $request->email;
+        self::$user->password = bcrypt($request->password);
+        self::$user->user_type = $request->user_type;
+        self::$user->created_by = Auth::user()->id;
+        self::$user->save();
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -25,6 +40,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'phone',
         'email',
         'password',
     ];

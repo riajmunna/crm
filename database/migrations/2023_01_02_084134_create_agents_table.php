@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('agent_email')->unique();
             $table->text('agent_address');
             $table->text('agent_password');
+            $table->string('agent_login')->nullable();
+            $table->string('agent_logout')->nullable();
             $table->text('created_by');
             $table->tinyInteger('status')->default(1)->comment('0 = Inactive, 1= Active');
             $table->timestamps();

@@ -15,26 +15,7 @@
                 <span>Attendance</span>
             </a>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#Customer-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person-badge-fill"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="Customer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{route('add.customer')}}">
-                        <i class="bi bi-plus-circle"></i><span>Add Customer</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('manage.customer')}}">
-                        <i class="bi bi-pencil-square"></i><span>Manage Customer</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
-
+        @if(Auth::user()->user_type==1)
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-person-bounding-box"></i><span>Employee</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -52,7 +33,8 @@
                 </li>
             </ul>
         </li>
-
+        @endif
+        @if(Auth::user()->user_type==1 || Auth::user()->user_type==2)
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#agent-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-person-circle"></i><span>Agent</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -70,7 +52,31 @@
                 </li>
             </ul>
         </li>
-
+        @endif
+        
+        @if(Auth::user()->user_type==1 || Auth::user()->user_type==2 || Auth::user()->user_type==3)
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#Customer-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-person-badge-fill"></i><span>Customer</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Customer-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('add.customer')}}">
+                        <i class="bi bi-plus-circle"></i><span>Add Customer</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('manage.customer')}}">
+                        <i class="bi bi-pencil-square"></i><span>Manage Customer</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        @endif
+        
+        
+        
+        
         <li class="nav-item">
             <a class="nav-link " href="#">
                 <i class="bi bi-bell"></i>
@@ -130,7 +136,24 @@
                 <span>CRM</span>
             </a>
         </li>
-
+        @if(Auth::user()->user_type==1)
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#User-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-person-badge-fill"></i><span>User</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="User-nav" class="nav-content collapse @if(Route::current()->getName() == 'add.user' || Route::current()->getName() == 'manage.user') show @endif" data-bs-parent="#sidebar-nav">
+                <li class='nav-item'>
+                    <a href="{{route('add.user')}}">
+                        <i class="bi bi-plus-circle"></i><span>Add User</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('manage.user')}}">
+                        <i class="bi bi-pencil-square"></i><span>Manage User</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Setting-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-gear-fill"></i><span>Setting</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -143,7 +166,7 @@
                 </li>
             </ul>
         </li>
-
+        @endif
     </ul>
 
 </aside>

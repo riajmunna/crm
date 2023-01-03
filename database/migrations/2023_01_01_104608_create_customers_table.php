@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('customer_email')->unique();
             $table->text('customer_address');
             $table->string('customer_facebook_link')->unique();
+            $table->string('customer_login')->nullable();
+            $table->string('customer_logout')->nullable();
             $table->integer('created_by');
             $table->timestamps();
         });
