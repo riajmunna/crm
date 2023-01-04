@@ -27,11 +27,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('dashboard',[AdminController::class,'adminDashboard'])->name('dashboard');
     /* Admin  */
     Route::group(['middleware'=>'admin'], function(){
-    /* Employee */
-        Route::get('add-employee',[EmployeeController::class,'addEmployee'])->name('add.employee');
-        Route::post('add-employee',[EmployeeController::class,'saveEmployee'])->name('add.employee');
-        Route::get('manage-employee',[EmployeeController::class,'manageEmployee'])->name('manage.employee');
-        Route::post('delete-employee/{id}',[EmployeeController::class,'deleteEmployee'])->name('delete.employee');
+        /* Agent */
+        Route::get('add-agent',[AgentController::class,'addAgent'])->name('add.agent');
+        Route::post('add-agent',[AgentController::class,'saveAgent'])->name('add.agent');
+        Route::get('manage-agent',[AgentController::class,'manageAgent'])->name('manage.agent');
+        Route::post('delete-agent/{id}',[AgentController::class,'deleteAgent'])->name('delete.agent');
         /* User */
         Route::get('add-user',[UserController::class,'addUser'])->name('add.user');
         Route::post('add-user',[UserController::class,'saveUser'])->name('add.user');
@@ -44,23 +44,24 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::post('delete-batch/{id}',[BatchController::class,'deleteBatch'])->name('delete.batch');
 
     });
+        /* Agent */
+        Route::group(['middleware'=>'agent'], function(){
+            /* Employee */
+            Route::get('add-employee',[EmployeeController::class,'addEmployee'])->name('add.employee');
+            Route::post('add-employee',[EmployeeController::class,'saveEmployee'])->name('add.employee');
+            Route::get('manage-employee',[EmployeeController::class,'manageEmployee'])->name('manage.employee');
+            Route::post('delete-employee/{id}',[EmployeeController::class,'deleteEmployee'])->name('delete.employee');
+        });
         /* Employee */
         Route::group(['middleware'=>'employee'], function(){
-        /* Agent */
-            Route::get('add-agent',[AgentController::class,'addAgent'])->name('add.agent');
-            Route::post('add-agent',[AgentController::class,'saveAgent'])->name('add.agent');
-            Route::get('manage-agent',[AgentController::class,'manageAgent'])->name('manage.agent');
-            Route::post('delete-agent/{id}',[AgentController::class,'deleteAgent'])->name('delete.agent');
-        });
-            /* Agent */
-            Route::group(['middleware'=>'agent'], function(){
             /* Customer */
-                Route::get('add-customer',[CustomerController::class,'addCustomer'])->name('add.customer');
-                Route::post('add-customer',[CustomerController::class,'saveCustomer'])->name('add.customer');
-                Route::get('manage-customer',[CustomerController::class,'manageCustomer'])->name('manage.customer');
-                Route::post('delete-customer/{id}',[CustomerController::class,'deleteCustomer'])->name('delete.customer');
-            });
-       
+            Route::get('add-customer',[CustomerController::class,'addCustomer'])->name('add.customer');
+            Route::post('add-customer',[CustomerController::class,'saveCustomer'])->name('add.customer');
+            Route::get('manage-customer',[CustomerController::class,'manageCustomer'])->name('manage.customer');
+            Route::post('delete-customer/{id}',[CustomerController::class,'deleteCustomer'])->name('delete.customer');
+        });
+
+
 
 
 });

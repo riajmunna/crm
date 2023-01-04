@@ -16,44 +16,45 @@
             </a>
         </li>
         @if(Auth::user()->user_type==1)
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person-bounding-box"></i><span>Employee</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="employee-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{route('add.employee')}}">
-                        <i class="bi bi-plus-circle"></i><span>Add Employee</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('manage.employee')}}">
-                        <i class="bi bi-pencil-square"></i><span>Manage Employee</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#agent-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-circle"></i><span>Agent</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="agent-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{route('add.agent')}}">
+                            <i class="bi bi-plus-circle"></i><span>Add Agent</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('manage.agent')}}">
+                            <i class="bi bi-pencil-square"></i><span>Manage Agent</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
         @endif
         @if(Auth::user()->user_type==1 || Auth::user()->user_type==2)
-        <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#agent-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-person-circle"></i><span>Agent</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="agent-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                    <a href="{{route('add.agent')}}">
-                        <i class="bi bi-plus-circle"></i><span>Add Agent</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('manage.agent')}}">
-                        <i class="bi bi-pencil-square"></i><span>Manage Agent</span>
-                    </a>
-                </li>
-            </ul>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#employee-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-bounding-box"></i><span>Employee</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="employee-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{route('add.employee')}}">
+                            <i class="bi bi-plus-circle"></i><span>Add Employee</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('manage.employee')}}">
+                            <i class="bi bi-pencil-square"></i><span>Manage Employee</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
         @endif
-        
+
         @if(Auth::user()->user_type==1 || Auth::user()->user_type==2 || Auth::user()->user_type==3)
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Customer-nav" data-bs-toggle="collapse" href="#">
@@ -73,10 +74,10 @@
             </ul>
         </li>
         @endif
-        
-        
-        
-        
+
+
+
+
         <li class="nav-item">
             <a class="nav-link " href="#">
                 <i class="bi bi-bell"></i>

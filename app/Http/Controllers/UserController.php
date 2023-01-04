@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Batch;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class UserController extends Controller
 
     public function addUser()
     {
-        return view('admin.user.add-user');
+        return view('admin.user.add-user',['batches'=> Batch::all()]);
     }
 
     public function saveUser(Request $request)

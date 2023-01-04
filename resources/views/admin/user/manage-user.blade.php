@@ -23,11 +23,11 @@
                                     <th scope="col">List ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Mobile</th>
-                                
+
                                     <th scope="col">Login Time</th>
                                     <th scope="col">Logout Time</th>
                                     <th scope="col">User Type</th>
-                                 
+
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -43,19 +43,17 @@
                                         </td>
                                         <td scope="row">{{$employee->phone}}</td>
 
-                                     
+
                                         <td scope="row">{{$employee->created_at}}</td>
                                         <td scope="row">{{$employee->updated_at}}</td>
                                         <td>
                                         @if($employee->user_type == 1) Admin
-                                        @elseif($employee->user_type == 2) Employee
-                                        @elseif($employee->user_type == 3) Agent
-                                        @elseif($employee->user_type == 4) Customer
-                                        @else
-                                        Annonymous
-                                                @endif
+                                            @elseif($employee->user_type == 2) Agent
+                                            @elseif($employee->user_type == 3) Employee
+                                            @else Annonymouse
+                                            @endif
                                             </td>
-                                       
+
 
                                         <td>
                                         @if($employee->status == 1)

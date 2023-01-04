@@ -16,14 +16,30 @@
                     @csrf
                     <div class="col-12">
                         <label for="inputNanme4" class="form-label">User Type</label>
-                        <select name="user_type" class="form-control">
-                          
+                        <select id="test" name="user_type" class="form-control" onchange="showDiv('test', this)" >
+
                             <option value="1">Admin</option>
-                            <option value="2">Employee</option>
-                            <option value="3">Agent</option>
-                            <option value="4">Customer</option>
-                           
+                            <option value="2">Agent</option>
+                            <option value="3">Employee</option>
+
                         </select>
+                    </div>
+{{--          Employee          --}}
+                    <div id="test" style="display:block">
+                        <div class="col-12">
+                            <label for="inputNanme4" class="form-label">Employee Batch ID</label>
+                            <select name="batch_id" class="form-control">
+                                    <option value="">Select</option>
+                                @foreach($batches as $batch)
+                                    <option value="{{ $batch->id }}">{{ $batch->batch_id }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-12"><br>
+                            <label for="inputEmail4" class="form-label">Employee Registration Number</label>
+                            <input type="text" class="form-control" name="employee_registration_number" placeholder="Enter Registration Number">
+                        </div>
                     </div>
 
                     <div class="col-12">
@@ -34,15 +50,10 @@
                         <label for="inputNanme4" class="form-label">User Phone Number</label>
                         <input type="text" class="form-control" name="phone" placeholder="Enter User Phone Number">
                     </div>
-
-            
-
                     <div class="col-12">
                         <label for="inputEmail4" class="form-label">User Email</label>
                         <input type="email" class="form-control" name="email" placeholder="Enter User Email">
                     </div>
-
-           
                     <div class="col-12">
                         <label for="inputPassword4" class="form-label">User Password</label>
                         <input type="password" class="form-control"  name="password" placeholder="Enter User Password">
@@ -58,4 +69,12 @@
 
     </div>
     </main>
+@endsection
+@section('js')
+    <script>
+        function showDiv(divId, element)
+        {
+            document.getElementById(divId).style.display = element.value == 3 ? 'block' : 'none';
+        }
+    </script>
 @endsection

@@ -18,7 +18,7 @@ Fetures:
 12. Setting
 
 Middleware:
-Employee Access: Agent(Add,Manage,Edit,Delete); Customer(Add,Manage,Edit,Delete);
-Agent Access: Customer(Add,Manage,Edit,Delete);
+Agent Access: Employee(Add,Manage,Edit,Delete); Customer(Add,Manage,Edit,Delete);
+Employee Access: Customer(Add,Manage,Edit,Delete);
 
 

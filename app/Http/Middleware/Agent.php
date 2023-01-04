@@ -17,7 +17,7 @@ class Agent
      */
     public function handle(Request $request, Closure $next)
     {
-        if((Auth::User()->user_type==1) || (Auth::User()->user_type==2) || (Auth::User()->user_type==3)){
+        if((Auth::User()->user_type==1) || (Auth::User()->user_type==2)){
             return $next($request);
         }else{
             return redirect(route('dashboard'));
