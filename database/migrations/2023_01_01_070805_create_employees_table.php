@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('password');
             $table->string('employee_login')->nullable();
             $table->string('employee_logout')->nullable();
+            $table->string('user_total_working_time')->nullable()->index();
             $table->tinyInteger('employee_work_type')->dafault(1)->comment('1=Email; 2=Data Entry');
             $table->integer('employee_work_amount')->comment('Total Number of Email');
             $table->tinyInteger('status')->default(1)->comment('1 = Published; 0 = Unpublished');

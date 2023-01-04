@@ -23,6 +23,8 @@
                                         <th scope="col">Mobile</th>
                                         <th scope="col">Email</th>
                                         <th scope="col">Address</th>
+                                        <th scope="col">Login Time</th>
+                                        <th scope="col">Logout Time</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -36,6 +38,8 @@
                                             <td scope="row">{{$agent->phone}}</td>
                                             <td scope="row">{{$agent->email}}</td>
                                             <td scope="row">{{$agent->address}}</td>
+                                            <td scope="row">{{$agent->user_login}}</td>
+                                            <td scope="row">{{$agent->user_logout}}</td>
                                             @if($agent->status == 1)
                                                 <td class="text-success">Active</td>
                                             @else

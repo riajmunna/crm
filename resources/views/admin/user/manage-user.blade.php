@@ -44,8 +44,8 @@
                                         <td scope="row">{{$employee->phone}}</td>
 
 
-                                        <td scope="row">{{$employee->created_at}}</td>
-                                        <td scope="row">{{$employee->updated_at}}</td>
+                                        <td scope="row">{{$employee->user_login}}</td>
+                                        <td scope="row">{{$employee->user_logout}}</td>
                                         <td>
                                         @if($employee->user_type == 1) Admin
                                             @elseif($employee->user_type == 2) Agent

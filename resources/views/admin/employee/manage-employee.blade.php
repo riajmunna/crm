@@ -45,8 +45,8 @@
                                         <td scope="row">{{$employee->address}}</td>
 
                                         <td scope="row">{{$employee->employee_registration_number}}</td>
-                                        <td scope="row">{{$employee->created_at}}</td>
-                                        <td scope="row">{{$employee->updated_at}}</td>
+                                        <td scope="row">{{$employee->user_login}}</td>
+                                        <td scope="row">{{$employee->user_logout}}</td>
                                         <td scope="row"></td>
 
                                         @if($employee->status == 1)

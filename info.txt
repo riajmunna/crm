@@ -21,4 +21,7 @@ Middleware:
 Agent Access: Employee(Add,Manage,Edit,Delete); Customer(Add,Manage,Edit,Delete);
 Employee Access: Customer(Add,Manage,Edit,Delete);
 
+Login Time: crm/app/Providers/JetstreamServiceProvider; (function boot)
+Logout Time: crm/vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController; (function destroy)
+
 
