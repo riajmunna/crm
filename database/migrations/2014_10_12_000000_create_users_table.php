@@ -18,8 +18,8 @@ return new class extends Migration
             /* Employee*/
             $table->string('batch_id')->unique()->nullable();
             $table->string('employee_registration_number')->unique()->nullable();
-            $table->tinyInteger('employee_work_type')->dafault(1)->comment('1=Email; 2=Data Entry');
-            $table->integer('employee_work_amount')->comment('Total Number of Email');
+            $table->tinyInteger('employee_work_type')->dafault(1)->nullable()->comment('1=Email; 2=Data Entry');
+            $table->integer('employee_work_amount')->nullable()->comment('Total Number of Email');
             /* User*/
             $table->string('name');
             $table->string('phone')->unique();
