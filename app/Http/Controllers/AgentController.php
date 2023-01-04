@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Agent;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AgentController extends Controller
 {
@@ -41,7 +42,7 @@ class AgentController extends Controller
     public function manageAgent()
     {
         return view('admin.agent.manage-agent', [
-            'agents' => Agent::all(),
+            'agents' => User::where('user_type','=','2')->get(),
         ]);
     }
 

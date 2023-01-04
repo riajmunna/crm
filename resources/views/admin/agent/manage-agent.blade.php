@@ -32,10 +32,10 @@
                                     @foreach($agents as $agent)
                                         <tr>
                                             <td scope="row">{{$i++}}</td>
-                                            <td scope="row">{{$agent->agent_name}}</td>
-                                            <td scope="row">{{$agent->agent_phone}}</td>
-                                            <td scope="row">{{$agent->agent_email}}</td>
-                                            <td scope="row">{{$agent->agent_address}}</td>
+                                            <td scope="row">{{$agent->name}}</td>
+                                            <td scope="row">{{$agent->phone}}</td>
+                                            <td scope="row">{{$agent->email}}</td>
+                                            <td scope="row">{{$agent->address}}</td>
                                             @if($agent->status == 1)
                                                 <td class="text-success">Active</td>
                                             @else
@@ -50,7 +50,7 @@
                                                         <td>&nbsp;</td>
                                                         <td>
                                                             <form
-                                                                action="{{ route('delete.agent',['id'=>$agent->id]) }}"
+                                                                action="{{ route('delete.user',['id'=>$agent->id]) }}"
                                                                 method="post">
                                                                 @csrf
                                                                 <input type="hidden" name="agent_id"
@@ -62,9 +62,6 @@
                                                             </form>
                                                         </td>
                                                         <td>&nbsp;</td>
-                                                        <td>
-                                                            <a href="#" style="font-size: 10px" class="btn btn-secondary btn-sm">Email</a>
-                                                        </td>
                                                     </tr>
                                                 </table>
                                             </td>

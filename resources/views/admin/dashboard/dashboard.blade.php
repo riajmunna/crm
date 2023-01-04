@@ -47,7 +47,7 @@
                                             <i class="bi bi-person-bounding-box"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{\App\Models\Employee::count()}}</h6>
+                                            <h6>{{\App\Models\User::where('user_type','=','3')->count()}}</h6>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +80,7 @@
                                             <i class="bi bi-person-circle"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>{{\App\Models\Agent::count()}}</h6>
+                                            <h6>{{\App\Models\User::where('user_type','=','2')->count()}}</h6>
                                         </div>
                                     </div>
                                 </div>

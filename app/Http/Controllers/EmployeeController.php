@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Batch;
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class EmployeeController extends Controller
 {
@@ -43,7 +44,7 @@ class EmployeeController extends Controller
     public function manageEmployee()
     {
         return view('admin.employee.manage-employee',[
-            'employees' => Employee::all(),
+            'employees' => User::where('user_type','=','3')->get(),
         ]);
     }
 

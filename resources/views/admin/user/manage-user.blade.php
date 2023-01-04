@@ -70,7 +70,7 @@
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <form action="{{ route('delete.employee',['id'=>$employee->id]) }}" method="post">
+                                                        <form action="{{ route('delete.user',['id'=>$employee->id]) }}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                                             <button type="submit" class="btn btn-danger btn-sm" style="font-size: 10px"

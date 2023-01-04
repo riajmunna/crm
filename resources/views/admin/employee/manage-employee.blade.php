@@ -23,6 +23,7 @@
                                     <th scope="col">List ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Mobile</th>
+                                    <th scope="col">Address</th>
                                     <th scope="col">Registration Number</th>
                                     <th scope="col">Login Time</th>
                                     <th scope="col">Logout Time</th>
@@ -37,10 +38,11 @@
                                     <tr>
                                         <td scope="row">{{$i++}}</td>
                                         <td scope="row">
-                                            {{$employee->employee_name}} <br>
-                                            <small>{{$employee->employee_email}}</small>
+                                            {{$employee->name}} <br>
+                                            <small>{{$employee->email}}</small>
                                         </td>
-                                        <td scope="row">{{$employee->employee_phone}}</td>
+                                        <td scope="row">{{$employee->phone}}</td>
+                                        <td scope="row">{{$employee->address}}</td>
 
                                         <td scope="row">{{$employee->employee_registration_number}}</td>
                                         <td scope="row">{{$employee->created_at}}</td>
@@ -60,7 +62,7 @@
                                                     </td>
                                                     <td>&nbsp;</td>
                                                     <td>
-                                                        <form action="{{ route('delete.employee',['id'=>$employee->id]) }}" method="post">
+                                                        <form action="{{ route('delete.user',['id'=>$employee->id]) }}" method="post">
                                                             @csrf
                                                             <input type="hidden" name="employee_id" value="{{$employee->id}}">
                                                             <button type="submit" class="btn btn-danger btn-sm" style="font-size: 10px"
@@ -69,9 +71,6 @@
                                                         </form>
                                                     </td>
                                                     <td>&nbsp;</td>
-                                                    <td>
-                                                        <a href="" style="font-size: 10px" class="btn btn-secondary btn-sm">Email</a>
-                                                    </td>
                                                 </tr>
                                             </table>
                                         </td>

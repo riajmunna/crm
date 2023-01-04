@@ -27,6 +27,9 @@ class User extends Authenticatable
         self::$user->name = $request->name;
         self::$user->phone = $request->phone;
         self::$user->email = $request->email;
+        self::$user->address = $request->address;
+        self::$user->employee_registration_number = $request->employee_registration_number;
+        self::$user->batch_id = $request->batch_id;
         self::$user->password = bcrypt($request->password);
         self::$user->user_type = $request->user_type;
         self::$user->created_by = Auth::user()->id;
