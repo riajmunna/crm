@@ -53,7 +53,7 @@
                                                                 action="{{ route('delete.user',['id'=>$agent->id]) }}"
                                                                 method="post">
                                                                 @csrf
-                                                                <input type="hidden" name="agent_id"
+                                                                <input type="hidden" name="user_id"
                                                                        value="{{$agent->id}}">
                                                                 <button type="submit" style="font-size: 10px" class="btn btn-danger btn-sm"
                                                                         onclick="return confirm('Are you sure??')">
