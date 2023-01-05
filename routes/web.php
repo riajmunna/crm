@@ -25,6 +25,8 @@ Route::get('/',[FrontEndController::class,'index'])->name('home');
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
 
     Route::get('dashboard',[AdminController::class,'adminDashboard'])->name('dashboard');
+    Route::post('user-profile',[UserController::class,'userProfile'])->name('user.profile');
+    Route::post('edit-user',[UserController::class,'editUser'])->name('edit.user');
     /* Admin  */
     Route::group(['middleware'=>'admin'], function(){
         /* Agent */
@@ -37,6 +39,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::post('add-user',[UserController::class,'saveUser'])->name('add.user');
         Route::get('manage-user',[UserController::class,'manageUser'])->name('manage.user');
         Route::post('delete-user/{id}',[UserController::class,'deleteUser'])->name('delete.user');
+
          /* Setting */
         /* Batch */
         Route::post('add-batch',[BatchController::class,'saveBatch'])->name('add.batch');

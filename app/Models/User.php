@@ -19,7 +19,7 @@ class User extends Authenticatable
     use Notifiable;
     use TwoFactorAuthenticatable;
 
-    private static $user;
+    private static $user,$image,$imageName,$imgUrl,$directory;
 
     public static function saveUser($request)
     {
@@ -34,6 +34,25 @@ class User extends Authenticatable
         self::$user->user_type = $request->user_type;
         self::$user->created_by = Auth::user()->id;
         self::$user->save();
+    }
+
+    public static function editUser($request)
+    {
+        self::$user = User::find($request->user_id);
+        self::$user->name = $request->name;
+        self::$user->phone = $request->phone;
+        self::$user->email = $request->email;
+        self::$user->profile_photo_path = self::saveImage($request);
+        self::$user->save();
+    }
+
+    private static function saveImage($request){
+        self::$image = $request->file('profile_photo_path');
+        self::$imageName = rand() . '.' . self::$image->getClientOriginalExtension();
+        self::$directory = 'userImage/asset/image/';
+        self::$imgUrl = self::$directory . self::$imageName;
+        self::$image->move(self::$directory, self::$imageName);
+        return self::$imgUrl;
     }
 
     /**

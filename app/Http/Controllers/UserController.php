@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Batch;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -11,17 +12,16 @@ class UserController extends Controller
 
     public function addUser()
     {
-        return view('admin.user.add-user',['batches'=> Batch::all()]);
+        return view('admin.user.add-user', ['batches' => Batch::all()]);
     }
 
     public function saveUser(Request $request)
     {
         if ($request->name != null && $request->email != null && $request->password != null && $request->user_type != null) {
 
-            if(User::where('email',$request->email)->exists()){
+            if (User::where('email', $request->email)->exists()) {
                 return back()->with('warning', 'This email is already taken..');
-            }
-            else{
+            } else {
                 User::saveUser($request);
                 return back()->with('success', 'Successfully Added');
             }
@@ -33,7 +33,7 @@ class UserController extends Controller
 
     public function manageUser()
     {
-        return view('admin.user.manage-user',[
+        return view('admin.user.manage-user', [
             'users' => User::all(),
         ]);
     }
@@ -42,6 +42,20 @@ class UserController extends Controller
     {
         $this->user = User::find($request->user_id);
         $this->user->delete();
-        return back()->with('success','Successfully Deleted');;
+        return back()->with('success', 'Successfully Deleted');;
+    }
+
+    public function userProfile(Request $request)
+    {
+        $user = User::find($request->user_id);
+        return view('admin.user.user-profile', [
+            'user' => $user,
+        ]);
+    }
+
+    public function editUser(Request $request)
+    {
+        User::editUser($request);
+        return redirect(route('dashboard'));
     }
 }

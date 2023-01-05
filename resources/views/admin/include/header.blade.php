@@ -175,7 +175,7 @@
             <li class="nav-item dropdown pe-3">
 
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="{{asset('adminAsset')}}/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                    <img src="{{asset(Auth::user()->profile_photo_path)}}" alt="Profile" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{Auth::user()->name}}</span>
                 </a><!-- End Profile Iamge Icon -->
 
@@ -189,8 +189,12 @@
                     </li>
 
                     <li>
-                        <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <a class="dropdown-item d-flex align-items-center" href="" onclick="event.preventDefault(); document.getElementById('profile').submit()">
                             <i class="bi bi-person"></i>
+                            <form id="profile" action="{{route('user.profile')}}" method="post">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
+                            </form>
                             <span>My Profile</span>
                         </a>
                     </li>
