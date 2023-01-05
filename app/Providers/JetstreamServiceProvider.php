@@ -46,7 +46,7 @@ class JetstreamServiceProvider extends ServiceProvider
             $userSession = new UserSession();
             $userSession->insert([
                 'user_id' => $user->id,
-                'user_login' => Carbon::now()->toTimeString(),
+                'user_login' => Carbon::now()->toDateTimeString(),
             ]);
         }
 //        / Custom Code

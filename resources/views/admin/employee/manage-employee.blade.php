@@ -27,7 +27,7 @@
                                     <th scope="col">Registration Number</th>
                                     <th scope="col">Login Time</th>
                                     <th scope="col">Logout Time</th>
-                                    <th scope="col">Total Number of Mail</th>
+                                    <th scope="col">Total Login Hours</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -47,7 +47,18 @@
                                         <td scope="row">{{$employee->employee_registration_number}}</td>
                                         <td scope="row">{{$employee->user_login}}</td>
                                         <td scope="row">{{$employee->user_logout}}</td>
-                                        <td scope="row"></td>
+                                        <td scope="row">{{ Carbon\CarbonInterval::seconds($employee->employee_total_working_time)->cascade()->forHumans()}}
+{{--                                            @php--}}
+{{--                                            //$init = 150065;--}}
+{{--                                            $init = {{$employee->employee_total_working_time}}--}}
+{{--                                            $day = floor($init / 86400);--}}
+{{--                                            $hours = floor(($init -($day*86400)) / 3600);--}}
+{{--                                            $minutes = floor(($init / 60) % 60);--}}
+{{--                                            $seconds = $init % 60;--}}
+{{--                                            echo "$hours:$minutes:$seconds";--}}
+{{--                                           @endphp--}}
+
+                                        </td>
 
                                         @if($employee->status == 1)
                                             <td>Active</td>

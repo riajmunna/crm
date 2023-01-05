@@ -42,6 +42,11 @@ class User extends Authenticatable
         self::$user->name = $request->name;
         self::$user->phone = $request->phone;
         self::$user->email = $request->email;
+        if(self::$user->profile_photo_path){
+            if(file_exists(self::$user->profile_photo_path)){
+                unlink(self::$user->profile_photo_path);
+            }
+        }
         self::$user->profile_photo_path = self::saveImage($request);
         self::$user->save();
     }
@@ -67,6 +72,7 @@ class User extends Authenticatable
         'password',
         'user_login',
         'user_logout',
+        'employee_total_working_time',
     ];
 
     /**

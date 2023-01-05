@@ -26,6 +26,7 @@
 
                                     <th scope="col">Login Time</th>
                                     <th scope="col">Logout Time</th>
+                                    <th scope="col">Total Login Hours</th>
                                     <th scope="col">User Type</th>
 
                                     <th scope="col">Status</th>
@@ -46,6 +47,9 @@
 
                                         <td scope="row">{{$employee->user_login}}</td>
                                         <td scope="row">{{$employee->user_logout}}</td>
+                                        <td scope="row">
+                                            {{ Carbon\CarbonInterval::seconds($employee->employee_total_working_time)->cascade()->forHumans()}}
+                                        </td>
                                         <td>
                                         @if($employee->user_type == 1) Admin
                                             @elseif($employee->user_type == 2) Agent

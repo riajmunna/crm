@@ -13,5 +13,7 @@ class UserSession extends Model
         'user_id',
         'user_login',
         'user_logout',
+        'user_total_working_time',
+
     ];
 }
