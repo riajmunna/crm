@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('batch_id');
             $table->tinyInteger('status')->default(1)->comment('1=Published; 0=Unpublished');
-            $table->integer('created_by');
+            $table->integer('created_by')->default(0);
             $table->timestamps();
         });
     }
